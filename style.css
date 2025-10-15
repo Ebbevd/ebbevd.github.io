@@ -12,12 +12,13 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: center;
+    /* centers the <h1> horizontally */
+    align-items: center;
+    /* centers vertically */
     background: #000;
     color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
