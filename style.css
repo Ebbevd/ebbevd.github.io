@@ -5,6 +5,13 @@
     font-family: "Poppins", sans-serif;
 }
 
+p {
+    margin-bottom: 1.5em;
+    /* Adjust as needed */
+    line-height: 1.6;
+    /* Optional, makes text easier to read */
+}
+
 body {
     color: #222;
     background-color: #f9f9f9;
@@ -119,6 +126,61 @@ footer {
     font-size: 0.9rem;
     color: #555;
     font-style: italic;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 600px;
+    /* adjust to your image size */
+    margin: auto;
+}
+
+.slide {
+    display: none;
+    text-align: center;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-size: 0.95em;
+    color: #333;
+}
+
+/* Navigation buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 0.5em 1em;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: background 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
 }
 
 @media (min-width: 768px) {
