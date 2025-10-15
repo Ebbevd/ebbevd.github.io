@@ -59,7 +59,7 @@ nav a:hover {
     padding: 4rem 2rem;
     max-width: 900px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
 .steps {
@@ -93,6 +93,30 @@ footer {
     text-align: center;
     padding: 1.5rem;
     margin-top: 4rem;
+}
+
+.story-image {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.story-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.story-image img:hover {
+    transform: scale(1.02);
+}
+
+.story-image .caption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
 }
 
 @media (min-width: 768px) {
