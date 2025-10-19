@@ -4,108 +4,134 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Name — Slimme Verkoopautomaten</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
- <header>
-  <h4>Dijk & Snijders Technical Solutions</h4>
-</header>
+  
+  <!-- ✅ Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
 
-  <section id="hero">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      padding-top: 60px; /* avoid content under navbar */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ✅ Collapsible Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">Dijk & Snijders</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarFilter"
+        aria-controls="navbarFilter"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarFilter">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#model">Ons Businessmodel</a></li>
+          <li class="nav-item"><a class="nav-link" href="#story">Ons Verhaal</a></li>
+          <li class="nav-item"><a class="nav-link" href="#locations">Locaties</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ✅ Hero Section -->
+  <section id="hero" class="p-5 text-center bg-light">
     <div class="hero-content">
       <h2>Onbezorgde Post Omzetten in Kans</h2>
       <p>We plaatsen verkoopautomaten om onbezorgde post te verkopen — zo verminderen we verspilling, wekken nieuwsgierigheid en voorkomen we dat items voorgoed verdwijnen.</p>
     </div>
   </section>
 
-  <section id="model" class="content-section">
+  <!-- ✅ Business Model Section -->
+  <section id="model" class="content-section p-5">
     <h2>Ons Businessmodel</h2>
     <p>
-     Elk jaar blijven talloze pakketten en items ongeclaimd, worden geretourneerd of blijven ongebruikt om verschillende redenen — verkeerde adressen, mislukte leveringen of simpelweg vergeten bestellingen. In plaats van deze items te laten verspillen, proberen wij ze een tweede leven te geven. Onze aanpak gaat verder dan het simpelweg herverdelen van pakketten — het gaat om het creëren van een duurzaam systeem dat voor iedereen voordelen biedt: het milieu, logistieke partners en nieuwsgierige klanten.
+      Elk jaar blijven talloze pakketten en items ongeclaimd, worden geretourneerd of blijven ongebruikt om verschillende redenen — verkeerde adressen, mislukte leveringen of simpelweg vergeten bestellingen. In plaats van deze items te laten verspillen, proberen wij ze een tweede leven te geven.
     </p>
     <p>
-    We werken nauw samen met bezorgbedrijven en andere partners om items te verzamelen die anders zouden worden weggegooid. Elk pakket wordt geanonimiseerd en klaargemaakt voor de consumentenmarkt. Door ze in een van onze geautomatiseerde verkoopautomaten te plaatsen, voorkomen we niet alleen verspilling, maar creëren we ook een unieke ervaring voor onze klanten — elke aankoop is een verrassing die nieuwsgierigheid en enthousiasme opwekt.
-    </p>
-    <p>
-    Ons model is gebaseerd op de principes van duurzaamheid, efficiëntie en innovatie. Elk ongeclaimd of onbezorgd item vertegenwoordigt een kans — een kans om verspilling te verminderen, iemand te verrassen met een mysterieproduct en te laten zien dat zelfs dingen die vergeten lijken waarde kunnen hebben. Deze aanpak helpt de manier waarop we denken over ongebruikte of over het hoofd geziene items te herdefiniëren, en verandert ze in betekenisvolle ervaringen terwijl we een positieve impact op de planeet hebben.
+      We werken nauw samen met bezorgbedrijven en andere partners om items te verzamelen die anders zouden worden weggegooid. Elk pakket wordt geanonimiseerd en klaargemaakt voor de consumentenmarkt.
     </p>
 
-    <div class="steps">
-      <div class="step">
-        <h3>1. Wij Verzamelen</h3>
-        <p>We verzamelen onbezorgde items die legaal opnieuw verkocht mogen worden, zodat onnodige verspilling wordt voorkomen.</p>
-      </div>
-      <div class="step">
-        <h3>2. Wij Vulden Aan</h3>
-        <p>Elk pakket wordt opnieuw verpakt en in verkoopautomaten geplaatst op openbare locaties en vervoershubs.</p>
-      </div>
-      <div class="step">
-        <h3>3. Jij Ontdekt</h3>
-        <p>Klanten kopen een mysteriepakket — elke aankoop ondersteunt duurzaamheid en circulair hergebruik.</p>
-      </div>
-    </div>
+   <div class="steps"> 
+    <div class="step"> 
+      <h3>1. Wij Verzamelen</h3> 
+      <p>We verzamelen onbezorgde items die legaal opnieuw verkocht mogen worden, zodat onnodige verspilling wordt voorkomen.</p> 
+    </div> 
+    <div class="step"> 
+      <h3>2. Wij Vullen Aan</h3> 
+      <p>Elk pakket wordt opnieuw verpakt en in verkoopautomaten geplaatst op openbare locaties en vervoershubs.</p> 
+    </div> 
+    <div class="step"> 
+      <h3>3. Jij Ontdekt</h3> 
+      <p>Klanten kopen een mysteriepakket — elke aankoop ondersteunt duurzaamheid en circulair hergebruik.</p> 
+    </div> 
+  </div>
   </section>
 
+  <!-- ✅ Story Section -->
   <section id="story" class="content-section">
-    <h2>Ons Verhaal</h2>
-    <p>
-      Het idee kwam voort uit een eenvoudige vraag — wat gebeurt er met alle onbezorgde post die nooit thuis aankomt? Na te hebben ontdekt dat veel ervan wordt vernietigd, wilden we een systeem creëren dat iedereen ten goede komt: logistieke bedrijven, het milieu en nieuwsgierige klanten.
-    </p>
-    <p>
-        Onze reis begon met de verkoopautomaten zelf. Omdat veel automaten afhankelijk zijn van propriëtaire technologie geproduceerd door slechts een paar bedrijven, besloten we open-source alternatieven te onderzoeken. Alles is nu intern ontworpen en gebouwd! Onze software is volledig open-source en te vinden hier: 
-        <a href="https://github.com/Ebbevd/VendOS" target="_blank">VendOS op GitHub</a>. 
-        De machines zijn gebouwd met eenvoudige, gebruiksvriendelijke elektronica die gemakkelijk te repareren is. Deze aanpak stelde ons in staat verkoopautomaten te creëren die zowel betaalbaar als onderhoudbaar zijn. Onze allereerste machine was tweedehands, met alle elektronica vervangen om aan onze normen te voldoen.
-    </p>
-
-    <div class="story-image">
-      <div class="slideshow-container">
-        <div class="slide">
-          <img src="images/vending_outside.jpg" alt="Onze eerste verkoopautomaat" />
-          <p class="caption">Development log: Onze machines zijn volledig tweedehands, en beginnen vaak zo.</p>
-        </div>
-        <div class="slide">
-          <img src="images/vending_inside.jpg" alt="Tweede afbeelding" />
-          <p class="caption">Development log: De machines worden van binnen volledig door ons ontwikkeld.</p>
-        </div>
-        <div class="slide">
-          <img src="images/vending_screen.jpg" alt="Derde afbeelding" />
-          <p class="caption">Development log: We voorzien elke machine met een touchscreen scherm.</p>
-        </div>
-
-        <!-- Navigation buttons -->
-        <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-        <button class="next" onclick="plusSlides(1)">&#10095;</button>
-      </div>
-    </div>
-
-    <p>
-      Wat begon als een experimenteel concept, is uitgegroeid tot een duurzaam model dat recycling, innovatie en een vleugje mysterie combineert. Elke verkoopautomaat vertegenwoordigt een kleine stap naar een meer circulaire economie — en een leuke verrassing voor iedereen die meedoet.
-    </p>
+  <h2>Ons Verhaal</h2> 
+  <p> Het idee kwam voort uit een eenvoudige vraag — wat gebeurt er met alle onbezorgde post die nooit thuis aankomt? Na te hebben ontdekt dat veel ervan wordt vernietigd, wilden we een systeem creëren dat iedereen ten goede komt: logistieke bedrijven, het milieu en nieuwsgierige klanten. </p> 
+  <p> Onze reis begon met de verkoopautomaten zelf. Omdat veel automaten afhankelijk zijn van propriëtaire technologie geproduceerd door slechts een paar bedrijven, besloten we open-source alternatieven te onderzoeken. Alles is nu intern ontworpen en gebouwd! Onze software is volledig open-source en te vinden hier: <a href="https://github.com/Ebbevd/VendOS" target="_blank">VendOS op GitHub</a>. De machines zijn gebouwd met eenvoudige, gebruiksvriendelijke elektronica die gemakkelijk te repareren is. Deze aanpak stelde ons in staat verkoopautomaten te creëren die zowel betaalbaar als onderhoudbaar zijn. Onze allereerste machine was tweedehands, met alle elektronica vervangen om aan onze normen te voldoen. </p> 
+  <div class="story-image"> 
+    <div class="slideshow-container"> 
+      <div class="slide"> 
+        <img src="images/vending_making.jpeg" alt="Onze eerste verkoopautomaat" /> 
+        <p class="caption">Development log: Onze machines zijn volledig tweedehands, en beginnen vaak zo.</p> 
+      </div> <div class="slide"> 
+        <img src="images/vending_inside.jpeg" alt="Custom made elektronica" /> 
+        <p class="caption">Development log: De machines worden van binnen volledig door ons ontwikkeld.</p> 
+      </div> <div class="slide"> <img src="images/vending_programming.JPG" alt="Custom made software" /> 
+        <p class="caption">Development log: We voorzien elke machine met een touchscreen scherm.</p> 
+      </div> 
+      <!-- Navigation buttons --> 
+      <button class="prev" onclick="plusSlides(-1)">&#10094;</button> 
+      <button class="next" onclick="plusSlides(1)">&#10095;</button> 
+    </div> 
+  </div> 
+  <p> Wat begon als een experimenteel concept, is uitgegroeid tot een duurzaam model dat recycling, innovatie en een vleugje mysterie combineert. Elke verkoopautomaat vertegenwoordigt een kleine stap naar een meer circulaire economie — en een leuke verrassing voor iedereen die meedoet. </p>
   </section>
 
-  <section id="locations" class="content-section">
-  <h2>Op Zoek naar Locaties</h2>
-  <p>
-    Wij zijn actief op zoek naar nieuwe locaties voor onze verkoopautomaten. We zoeken ruimtes met veel voetverkeer, zoals kantoren, universiteiten, vervoershubs, winkelgebieden en gemeenschapscentra. Samenwerken met ons biedt de kans deel uit te maken van een innovatief, duurzaam project terwijl u iets unieks en spannends aan uw bezoekers biedt. Wij zijn nog druk in de weer met het perfectioneren van onze automaten en het uitbreiden van ons netwerk, dus dit is het perfecte moment om aan boord te komen.
-  </p>
-  <p>
-    Als u een ruimte heeft die een van onze machines kan huisvesten, horen we graag van u. Laten we samenwerken om duurzaamheid, nieuwsgierigheid en gemak naar uw locatie te brengen.
-  </p>
-</section>
+  <!-- ✅ Locations Section -->
+  <section id="locations" class="content-section p-5">
+    <h2>Op Zoek naar Locaties</h2>
+    <p> Wij zijn actief op zoek naar nieuwe locaties voor onze verkoopautomaten. We zoeken ruimtes met veel voetverkeer, zoals kantoren, universiteiten, vervoershubs, winkelgebieden en gemeenschapscentra. Samenwerken met ons biedt de kans deel uit te maken van een innovatief, duurzaam project terwijl u iets unieks en spannends aan uw bezoekers biedt. Wij zijn nog druk in de weer met het perfectioneren van onze automaten en het uitbreiden van ons netwerk, dus dit is het perfecte moment om aan boord te komen. </p> <p> Als u een ruimte heeft die een van onze machines kan huisvesten, horen we graag van u. Laten we samenwerken om duurzaamheid, nieuwsgierigheid en gemak naar uw locatie te brengen. </p>
+  </section>
 
-  <section id="contact" class="content-section">
+  <!-- ✅ Contact Section -->
+  <section id="contact" class="content-section p-5 bg-light">
     <h2>Contact</h2>
-    <p>Als u wilt samenwerken, een van onze verkoopautomaten wilt hosten of meer wilt weten, neem contact met ons op. Wij staan altijd open voor een gesprek: </p>
-    <ul class="contact-list">
+    <ul>
       <li><strong>Email:</strong> vandijkebbe@gmail.com</li>
       <li><strong>Telefoon:</strong> +31649372053</li>
     </ul>
   </section>
 
-  <footer>
-    <p>© <span id="year"></span> Name. Alle rechten voorbehouden.</p>
+  <!-- ✅ Footer -->
+  <footer class="text-center p-3 mt-4 bg-dark text-white">
+    <p>© <span id="year"></span> Dijk & Snijders Technical Solutions. Alle rechten voorbehouden.</p>
   </footer>
 
+  <!-- ✅ Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
