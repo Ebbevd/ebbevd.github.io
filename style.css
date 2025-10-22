@@ -199,20 +199,22 @@ footer {
     height: 14px;
     border-radius: 50%;
     background-color: red;
+    /* default red if no class is applied */
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.status-green {
+/* Green when online */
+#status-indicator.status-green {
     background-color: #27ae60;
     box-shadow: 0 0 8px rgba(39, 174, 96, 0.6);
 }
 
-.status-red {
-    background-color: #e74c3c;
-    box-shadow: 0 0 8px rgba(231, 76, 60, 0.6);
+/* Optional: explicitly red when online check fails (redundant, but clearer) */
+#status-indicator.status-red {
+    background-color: red;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
-
 
 @media (min-width: 768px) {
     .steps {
