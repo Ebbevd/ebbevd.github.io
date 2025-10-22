@@ -26,6 +26,8 @@ async function checkVendingMachineStatus() {
     if (!indicator) return console.error("Status indicator element not found");
 
     try {
+        const now = new Date();
+        console.log("Current time:", now);
         // Update the status (GET or POST)
         await fetch(URL + "/status/update-status/", {
             method: "GET",
@@ -43,15 +45,16 @@ async function checkVendingMachineStatus() {
         const lastBeat = new Date(data.lastBeat.replace(/\.(\d{3})\d+/, '.$1'));
         if (isNaN(lastBeat)) throw new Error("Invalid lastBeat date");
 
-        const now = new Date();
         const diffMinutes = (now - lastBeat) / (1000 * 60);
 
         console.log(`Last beat: ${lastBeat}, Now: ${now}, Diff (minutes): ${diffMinutes}`);
 
         if (diffMinutes <= 30) {
+            console.log("Vending machine is ONLINE");
             indicator.classList.remove("status-red");
             indicator.classList.add("status-green");
         } else {
+            console.log("Vending machine is OFFLINE");
             indicator.classList.remove("status-green");
             indicator.classList.add("status-red");
         }
