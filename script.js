@@ -18,30 +18,31 @@ function showSlides(n) {
     }
     slides[slideIndex - 1].style.display = "block";
 }
-// --- Vending Machine 1 Status Check ---
+
 async function checkVendingMachineStatus() {
     const URL = "https://sympodial-plicately-fredia.ngrok-free.dev";
     const indicator = document.getElementById("status-indicator");
 
+    if (!indicator) return console.error("Status indicator element not found");
+
     try {
-        // 1️⃣ Update the status first (POST or GET, as your endpoint requires)
-        await await fetch(URL + "/status/update-status/", {
+        // Update the status (GET or POST)
+        await fetch(URL + "/status/update-status/", {
             method: "GET",
-            headers: {
-                "ngrok-skip-browser-warning": "true"
-            },
+            headers: { "ngrok-skip-browser-warning": "true" },
         });
 
-        // 2️⃣ Get the current status
+        // Get the current status
         const response = await fetch(URL + "/status/get-status/", {
             method: "GET",
-            headers: {
-                "ngrok-skip-browser-warning": "true"
-            },
+            headers: { "ngrok-skip-browser-warning": "true" },
         });
         const data = await response.json();
 
-        const lastBeat = new Date(data.lastBeat);
+        // Trim microseconds if necessary
+        const lastBeat = new Date(data.lastBeat.replace(/\.(\d{3})\d+/, '.$1'));
+        if (isNaN(lastBeat)) throw new Error("Invalid lastBeat date");
+
         const now = new Date();
         const diffMinutes = (now - lastBeat) / (1000 * 60);
 
@@ -59,6 +60,6 @@ async function checkVendingMachineStatus() {
     }
 }
 
-// Check every 5 minutes
+// Initial check and every 5 minutes
 checkVendingMachineStatus();
 setInterval(checkVendingMachineStatus, 5 * 60 * 1000);
