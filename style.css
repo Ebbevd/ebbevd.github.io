@@ -183,6 +183,37 @@ footer {
     right: 10px;
 }
 
+/* --- Vending Machine Status Indicator --- */
+#machine-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    background-color: black;
+    font-size: 0.9rem;
+}
+
+#status-indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: red;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.status-green {
+    background-color: #27ae60;
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.6);
+}
+
+.status-red {
+    background-color: #e74c3c;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.6);
+}
+
+
 @media (min-width: 768px) {
     .steps {
         flex-direction: row;
