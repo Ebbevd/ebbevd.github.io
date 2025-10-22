@@ -46,6 +46,8 @@ async function checkVendingMachineStatus() {
         const now = new Date();
         const diffMinutes = (now - lastBeat) / (1000 * 60);
 
+        console.log(`Last beat: ${lastBeat}, Now: ${now}, Diff (minutes): ${diffMinutes}`);
+
         if (diffMinutes <= 30) {
             indicator.classList.remove("status-red");
             indicator.classList.add("status-green");
