@@ -25,20 +25,10 @@ async function checkVendingMachineStatus() {
 
     try {
         // 1️⃣ Update the status first (POST or GET, as your endpoint requires)
-        await fetch(URL + "/status/update-status/", {
-            method: "GET", // or "POST" if your backend expects POST
-            headers: {
-                "ngrok-skip-browser-warning": "true"
-            },
-        });
+        await fetch(URL + "/status/update-status/");
 
         // 2️⃣ Get the current status
-        const response = await fetch(URL + "/status/get-status/", {
-            method: "GET",
-            headers: {
-                "ngrok-skip-browser-warning": "true"
-            },
-        });
+        const response = await fetch(URL + "/status/get-status/");
         const data = await response.json();
 
         const lastBeat = new Date(data.lastBeat);
