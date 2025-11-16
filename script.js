@@ -66,7 +66,7 @@ async function checkVendingMachineStatus() {
 }
 
 const translations = {
-    en: {
+    EN: {
         nav_home: "Home",
         nav_model: "Our Business Model",
         nav_story: "Our Story",
@@ -102,7 +102,7 @@ const translations = {
         vending_label: "Vending Machine 1:",
         rights_text: "All rights reserved."
     },
-    nl: {
+    NL: {
         nav_home: "Home",
         nav_model: "Ons Businessmodel",
         nav_story: "Ons Verhaal",
@@ -116,7 +116,7 @@ const translations = {
         step1_title: "1. Wij Verzamelen",
         step1_text: "We verzamelen onbezorgde items die legaal opnieuw verkocht mogen worden, zodat onnodige verspilling wordt voorkomen.",
         step2_title: "2. Wij Vullen Aan",
-        step2_text: "Elk pakket wordt opnieuw verpakt en in verkoopautomaten geplaatst op openbare locaties en vervoershubs.",
+        step2_text: "Zonder voorkennis worden pakketten in verkoopautomaten geplaatst op openbare locaties en vervoershubs.",
         step3_title: "3. Jij Ontdekt",
         step3_text: "Klanten kopen een mysteriepakket — elke aankoop ondersteunt duurzaamheid en circulair hergebruik.",
         story_title: "Ons Verhaal",
@@ -140,13 +140,32 @@ const translations = {
     }
 };
 
-let currentLang = "nl";
+let currentLang = "NL"; // initial language
 
 document.getElementById("lang-toggle").addEventListener("click", () => {
-    currentLang = currentLang === "nl" ? "en" : "nl";
-    document.getElementById("lang-toggle").innerText = currentLang === "nl" ? "EN" : "NL";
+    // Toggle language
+    currentLang = currentLang === "NL" ? "EN" : "NL"; // uppercase consistently
+
+    if (currentLang == "NL") {
+        buttonLang = "EN"
+    } else {
+        buttonLang = "NL"
+    }
+    // Flag URLs
+    const flags = {
+        NL: "https://flagcdn.com/w20/nl.png",
+        EN: "https://flagcdn.com/w20/gb.png"
+    };
+
+    // Update button with flag + text
+    document.getElementById("lang-toggle").innerHTML = `
+        <img src="${flags[buttonLang]}" alt="${buttonLang} flag">${buttonLang.toUpperCase()}
+    `;
+
+    // Update other texts
     updateTexts();
 });
+
 
 function updateTexts() {
     document.querySelectorAll("[data-key]").forEach(el => {
