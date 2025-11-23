@@ -81,7 +81,6 @@ async function getVendingMachineStock() {
 
     } catch (error) {
         console.error("Failed to fetch machine stock:", error);
-        sendError();
     }
 
 }
