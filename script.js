@@ -65,6 +65,55 @@ async function checkVendingMachineStatus() {
     }
 }
 
+async function getVendingMachineStock() {
+    // If stock is low send an alert. 
+    const URL = "https://sympodial-plicately-fredia.ngrok-free.dev";
+    try {
+        const response = await fetch(URL + "/status/get-stock/", {
+            method: "GET",
+            headers: { "ngrok-skip-browser-warning": "true" },
+        });
+        const data = await response.json();
+
+        if (data.storage_status == "low_stock") {
+            sendAlert();
+        }
+
+    } catch (error) {
+        console.error("Failed to fetch machine stock:", error);
+        sendError();
+    }
+
+}
+
+function sendAlert() {
+    // Send an alert when stock is low
+    console.log("Stock is low! Sending alert...");
+    // Implement alert logic here (e.g., send email or notification)
+    emailjs.send("service_khjc9j8", "template_qokzv6w")
+        .then(() => {
+            console.log("Alert email sent successfully!");
+        })
+        .catch((err) => {
+            console.error("Failed to send alert email:", err);
+        });
+}
+
+function sendError() {
+    // Send an alert when stock is low
+    console.log("Could not connect to vending machine! Sending alert...");
+    // Implement alert logic here (e.g., send email or notification)
+    emailjs.send("service_khjc9j8", "template_yrvk7xe")
+        .then(() => {
+            console.log("Alert email sent successfully!");
+        })
+        .catch((err) => {
+            console.error("Failed to send alert email:", err);
+        });
+}
+
+
+
 const translations = {
     EN: {
         nav_home: "Home",
@@ -183,4 +232,6 @@ document.getElementById("year").innerText = new Date().getFullYear();
 // Initial check and every 5 minutes
 checkVendingMachineStatus();
 setInterval(checkVendingMachineStatus, 5 * 60 * 1000);
+getVendingMachineStock();
+setInterval(getVendingMachineStock, 5 * 60 * 1000);
 
