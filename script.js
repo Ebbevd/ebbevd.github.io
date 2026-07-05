@@ -39,14 +39,14 @@ const translations = {
 
         hero_eyebrow: "AUTOMATISERINGSBUREAU",
         hero_title: "Wij bouwen systemen die zichzelf runnen.",
-        hero_text: "Dijk &amp; Snijders ontwerpt, bouwt en onderhoudt automatisering op maat — van industriële processen tot de verkoopautomaten waarmee we ooit begonnen. Eén filosofie: eenvoudige, robuuste techniek die jarenlang meegaat.",
+        hero_text: "Dijk &amp; Snijders ontwerpt, bouwt en onderhoudt automatisering op maat, van kleine industriële processen tot de verkoopautomaten waarmee we ooit begonnen. Eén filosofie: eenvoudige, robuuste techniek die jarenlang meegaat.",
         hero_cta_primary: "Plan een gesprek",
         hero_cta_secondary: "Bekijk onze diensten",
 
         services_eyebrow: "WAT WE DOEN",
         services_title: "Vier disciplines, één aanpak",
         service1_title: "Automatiseringsadvies",
-        service1_text: "We brengen uw proces in kaart en ontwerpen een automatiseringsoplossing op maat — van eerste idee tot werkend prototype.",
+        service1_text: "We brengen uw proces in kaart en ontwerpen een automatiseringsoplossing op maat, van eerste idee tot werkend prototype.",
         service2_title: "Elektronica &amp; Hardware",
         service2_text: "Custom elektronica, ontworpen om te repareren in plaats van te vervangen. Betaalbaar, onderhoudbaar en gebouwd om lang mee te gaan.",
         service3_title: "Verkoopautomaten: Bouw &amp; Reparatie",
@@ -59,7 +59,7 @@ const translations = {
         step1_title: "Analyse",
         step1_text: "We duiken in uw proces en brengen kansen voor automatisering concreet in kaart.",
         step2_title: "Ontwerp",
-        step2_text: "Samen ontwerpen we een oplossing — hardware, software, of allebei — afgestemd op uw situatie.",
+        step2_text: "Samen ontwerpen we een oplossing: hardware, software, of allebei. Alles afgestemd op uw situatie.",
         step3_title: "Bouw",
         step3_text: "We bouwen en testen een werkend systeem, meestal eerst als prototype op kleine schaal.",
         step4_title: "Onderhoud",
@@ -67,18 +67,18 @@ const translations = {
 
         story_eyebrow: "ONS VERHAAL",
         story_title: "Van de basischool tot een automatiseringssamenwerking",
-        story_p1: "Ik en Robin kennen elkaar als sinds de basischool, na ook veel van onze studententeid samen te hebben doorgebracht leek het ons leuk een bedrijfje op te richten. Dit begon bij het kopen van een tweede hands verkoopautomaat. Dit hebben we volledig handgebouwd met eigen software. Met deze kennis zijn we veder gegaan.",
+        story_p1: "Wij kennen elkaar als sinds de basischool, na ook veel van onze studententeid samen te hebben doorgebracht leek het ons leuk een bedrijfje op te richten. Dit begon bij het kopen van een tweede hands verkoopautomaat. Dit hebben we volledig handgebouwd met eigen software. Met deze kennis zijn we veder gegaan.",
         story_p2: 'Omdat verkoopautomaten meestal draaien op propriëtaire techniek van een handvol fabrikanten, ontwierpen we onze eigen: eenvoudige, gebruiksvriendelijke elektronica en volledig open-source besturingssoftware, <a href="https://github.com/Ebbevd/VendOS" target="_blank" rel="noopener">VendOS</a>, die iedereen vrij kan gebruiken.',
-        story_p3: "Die aanpak — robuuste, repareerbare techniek zonder onnodige complexiteit — bleek breder toepasbaar dan verkoopautomaten alleen. Vandaag zetten we dezelfde denkwijze in voor automatiseringsprojecten in uiteenlopende sectoren, terwijl we onze eerste liefde, de verkoopautomaat, zijn blijven bouwen en repareren.",
+        story_p3: "Die aanpak; robuuste, repareerbare techniek zonder onnodige complexiteit, bleek breder toepasbaar dan verkoopautomaten alleen. Vandaag zetten we dezelfde denkwijze in voor automatiseringsprojecten in uiteenlopende sectoren, terwijl we onze eerste liefde, de verkoopautomaat, zijn blijven bouwen en repareren.",
 
         who_eyebrow: "VOOR WIE",
         who_title: "Met wie we werken",
         who1_title: "Exploitanten van verkoopautomaten",
-        who1_text: "U vult en beheert de machine, wij zorgen dat de techniek erin blijft werken — van eerste installatie tot reparatie.",
+        who1_text: "U vult en beheert de machine, wij zorgen dat de techniek erin blijft werken, van eerste installatie tot reparatie.",
         who2_title: "Facilitaire bedrijven &amp; kantoren",
         who2_text: "Terugkerende processen die handmatig worden gedaan, zijn vaak kandidaat voor automatisering. We denken vrijblijvend mee.",
         who3_title: "Productie- &amp; logistieke bedrijven",
-        who3_text: "Van kleine slimme sensoren tot volledige besturingssystemen: we bouwen automatisering die past bij uw schaal.",
+        who3_text: "We opereren in kleine bedrijven die kennis nodig hebben met betrekking tot automatisering, zowal op het gebied van hardware als software.",
 
         contact_eyebrow: "CONTACT",
         contact_title: "Laten we praten",
@@ -107,7 +107,7 @@ const translations = {
 
         hero_eyebrow: "AUTOMATION STUDIO",
         hero_title: "We build systems that run themselves.",
-        hero_text: "Dijk &amp; Snijders designs, builds, and maintains custom automation, from industrial processes to the vending machines we once started with. One philosophy: simple, robust technology that lasts for years.",
+        hero_text: "Dijk &amp; Snijders designs, builds, and maintains custom automation, from small scale industrial processes to the vending machines we once started with. One philosophy: simple, robust technology that lasts for years.",
         hero_cta_primary: "Book a call",
         hero_cta_secondary: "See our services",
 
@@ -135,7 +135,7 @@ const translations = {
 
         story_eyebrow: "OUR STORY",
         story_title: "From primary school to an automation partnership",
-        story_p1: "Robin and I have known each other since primary school, and after spending much of our student years together too, we thought it would be fun to start a small company. It began with buying a secondhand vending machine, which we rebuilt entirely by hand with our own software. From there, we kept building on that knowledge.",
+        story_p1: "We have known each other since primary school, and after spending much of our student years together too, we thought it would be fun to start a small company. It began with buying a secondhand vending machine, which we rebuilt entirely by hand with our own software. From there, we kept building on that knowledge.",
         story_p2: 'Since most vending machines run on proprietary technology from a handful of manufacturers, we designed our own: simple, user friendly electronics and fully open source control software, <a href="https://github.com/Ebbevd/VendOS" target="_blank" rel="noopener">VendOS</a>, free for anyone to use.',
         story_p3: "That approach; robust, repairable technology without unnecessary complexity, turned out to apply far beyond vending machines alone. Today we bring the same thinking to automation projects across many different sectors, while still building and repairing our first love, the vending machine.",
 
@@ -146,7 +146,7 @@ const translations = {
         who2_title: "Facility Companies &amp; Offices",
         who2_text: "Recurring processes that are still done manually are often good candidates for automation. We're happy to think it through with you, with no obligation.",
         who3_title: "Manufacturing &amp; Logistics Companies",
-        who3_text: "From small smart sensors to complete control systems: we build automation that fits your scale.",
+        who3_text: "We operate with small businesses that need knowledge about automation, both in terms of hardware and software.",
 
         contact_eyebrow: "CONTACT",
         contact_title: "Let's talk",
