@@ -1,159 +1,274 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dijk & Snijders — Duurzaam Innoveren</title>
-  
-  <!-- ✅ Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="meta_title">Dijk & Snijders — Automatisering &amp; Techniek</title>
+<meta name="description" content="Dijk & Snijders is een automatiseringsbureau: automatiseringsadvies, custom elektronica, en de bouw en reparatie van verkoopautomaten.">
 
-  <link rel="stylesheet" href="style.css" />
-
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      padding-top: 60px; /* avoid content under navbar */
-    }
-  </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <!-- ✅ Collapsible Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">Dijk & Snijders</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarFilter"
-        aria-controls="navbarFilter"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarFilter">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" data-key="nav_home" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link" data-key="nav_model" href="#model">Ons Businessmodel</a></li>
-          <li class="nav-item"><a class="nav-link" data-key="nav_story" href="#story">Ons Verhaal</a></li>
-          <li class="nav-item"><a class="nav-link" data-key="nav_locations" href="#locations">Locaties</a></li>
-          <li class="nav-item"><a class="nav-link" data-key="nav_contact" href="#contact">Contact</a></li>
-        </ul>
-      </div>
+<div class="blueprint-grid" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main">Naar de inhoud</a>
+
+<header class="site-header">
+  <nav class="navbar" id="navbar">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">D&amp;S</span>
+      <span class="brand-name">Dijk &amp; Snijders</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="#services" data-i18n="nav_services">Diensten</a></li>
+        <li><a href="#process" data-i18n="nav_process">Werkwijze</a></li>
+        <li><a href="#story" data-i18n="nav_story">Ons Verhaal</a></li>
+        <li><a href="#who" data-i18n="nav_who">Voor Wie</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+      <button id="lang-toggle" class="lang-btn" aria-label="Change language">
+        <img src="https://flagcdn.com/w20/gb.png" alt="" width="20" height="15">
+        <span>EN</span>
+      </button>
     </div>
   </nav>
+</header>
 
-  <!-- ✅ Hero Section -->
-  <section id="hero" class="p-5 text-center bg-light">
-    <div class="hero-content">
-      <h2 data-key="hero_title">Onbezorgde Post Omzetten in Kans</h2>
-      <p data-key="hero_text">We plaatsen verkoopautomaten om onbezorgde post te verkopen. Zo verminderen we verspilling, wekken nieuwsgierigheid en voorkomen we dat items voorgoed verdwijnen.</p>
+<main id="main">
+
+  <!-- ===== HERO ===== -->
+  <section id="top" class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="hero_eyebrow">AUTOMATISERING EN ADVIES</p>
+      <h1 data-i18n="hero_title">Wij bouwen systemen die zichzelf runnen.</h1>
+      <p class="hero-text" data-i18n="hero_text">Dijk &amp; Snijders ontwerpt, bouwt en onderhoudt automatisering op maat, van industriële processen tot de verkoopautomaten waarmee we ooit begonnen. Eén filosofie: eenvoudige, robuuste techniek die jarenlang meegaat.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary" data-i18n="hero_cta_primary">Plan een gesprek</a>
+        <a href="#services" class="btn btn-ghost" data-i18n="hero_cta_secondary">Bekijk onze diensten</a>
+      </div>
+    </div>
+
+    <div class="hero-diagram" role="img" aria-label="Schematische tekening: één verkoopautomaat als basis voor drie disciplines: advies, hardware en software">
+      <div class="dwg-frame">
+        <svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" class="schematic" id="schematic">
+          <!-- nodes -->
+          <g class="node" style="--delay:1s">
+            <rect x="20" y="40" width="450" height="80" rx="2" class="node-plate"/>
+            <circle cx="30" cy="58" r="4" class="node-dot"/>
+            <text x="40" y="58" class="node-label">ADVIES</text>
+            <text x="40" y="90" class="node-sub">Analyse &amp; ontwerp</text>
+          </g>
+          <g class="node" style="--delay:1.2s">
+            <rect x="20" y="165" width="450" height="80" rx="2" class="node-plate"/>
+            <circle cx="30" cy="184" r="4" class="node-dot"/>
+            <text x="40" y="184" class="node-label">HARDWARE</text>
+            <text x="40" y="215" class="node-sub">Elektronica op maat</text>
+          </g>
+          <g class="node" style="--delay:1.4s">
+            <rect x="20" y="290" width="450" height="80" rx="2" class="node-plate"/>
+            <circle cx="30" cy="308" r="4" class="node-dot"/>
+            <text x="40" y="308" class="node-label">SOFTWARE</text>
+            <text x="40" y="340" class="node-sub">Open source besturing</text>
+          </g>
+        </svg>
+        <div class="dwg-titleblock">
+          <span>V1</span><span>CURRENT OFFERINGS</span><span>REV C</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ✅ Business Model Section -->
-  <section id="model" class="content-section p-5">
-    <h2 data-key="model_title">Ons Businessmodel</h2>
-    <p data-key="model_text_1">
-      Elk jaar blijven talloze pakketten en items ongeclaimd, worden geretourneerd of blijven ongebruikt om verschillende redenen: Verkeerde adressen, mislukte leveringen of simpelweg vergeten bestellingen. In plaats van deze items te laten verspillen, proberen wij ze een tweede leven te geven.
-    </p>
-    <p data-key="model_text_2">
-      We werken nauw samen met bezorgbedrijven en andere partners om items te verzamelen die anders zouden worden weggegooid. Elk pakket wordt geanonimiseerd en klaargemaakt voor de consumentenmarkt.
-    </p>
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="section">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="services_eyebrow">WAT WE DOEN</p>
+      <h2 data-i18n="services_title">Vier disciplines, één aanpak</h2>
+    </div>
 
-   <div class="steps"> 
-    <div class="step"> 
-      <h3 data-key="step1_title">1. Wij Verzamelen</h3> 
-      <p data-key="step1_text">We verzamelen onbezorgde items die legaal opnieuw verkocht mogen worden, zodat onnodige verspilling wordt voorkomen.</p> 
-    </div> 
-    <div class="step"> 
-      <h3 data-key="step2_title">2. Wij Vullen Aan</h3> 
-      <p data-key="step2_text">Zonder voorkennis worden pakketten in verkoopautomaten geplaatst op openbare locaties en vervoershubs.</p> 
-    </div> 
-    <div class="step"> 
-      <h3 data-key="step3_title">3. Jij Ontdekt</h3> 
-      <p data-key="step3_text">Klanten kopen een mysteriepakket — elke aankoop ondersteunt duurzaamheid en circulair hergebruik.</p> 
-    </div> 
+    <div class="card-grid">
+      <article class="card">
+        <span class="card-ref">§01</span>
+        <h3 data-i18n="service1_title">Automatiseringsadvies</h3>
+        <p data-i18n="service1_text">We brengen uw proces in kaart en ontwerpen een automatiseringsoplossing op maat, van eerste idee tot werkend prototype.</p>
+      </article>
+      <article class="card">
+        <span class="card-ref">§02</span>
+        <h3 data-i18n="service2_title">Elektronica &amp; Hardware</h3>
+        <p data-i18n="service2_text">Custom elektronica, ontworpen om te repareren in plaats van te vervangen. Betaalbaar, onderhoudbaar en gebouwd om lang mee te gaan.</p>
+      </article>
+      <article class="card">
+        <span class="card-ref">§03</span>
+        <h3 data-i18n="service3_title">Verkoopautomaten: Bouw &amp; Reparatie</h3>
+        <p data-i18n="service3_text">We bouwen en repareren verkoopautomaten met onze eigen techniek. U beheert de voorraad; wij zorgen dat de machine het gewoon blijft doen.</p>
+      </article>
+      <article class="card">
+        <span class="card-ref">§04</span>
+        <h3 data-i18n="service4_title">Open-Source Besturingssoftware</h3>
+        <p data-i18n="service4_text">Onze software word in-house ontwikkeld en is volledig open-source. Updates zijn regelmatig beschikbaar en features worden op request toegevoegd.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section id="process" class="section section-alt">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="process_eyebrow">WERKWIJZE</p>
+      <h2 data-i18n="process_title">Van idee naar werkend systeem</h2>
+    </div>
+
+    <ol class="process-line">
+      <li>
+        <span class="step-index">1</span>
+        <h3 data-i18n="step1_title">Analyse</h3>
+        <p data-i18n="step1_text">We duiken in uw proces en brengen kansen voor automatisering concreet in kaart.</p>
+      </li>
+      <li>
+        <span class="step-index">2</span>
+        <h3 data-i18n="step2_title">Ontwerp</h3>
+        <p data-i18n="step2_text">Samen ontwerpen we een oplossing: hardware, software, of allebei. Alles afgestemd op uw situatie.</p>
+      </li>
+      <li>
+        <span class="step-index">3</span>
+        <h3 data-i18n="step3_title">Bouw</h3>
+        <p data-i18n="step3_text">We bouwen en testen een werkend systeem, meestal eerst als prototype op kleine schaal.</p>
+      </li>
+      <li>
+        <span class="step-index">4</span>
+        <h3 data-i18n="step4_title">Onderhoud</h3>
+        <p data-i18n="step4_text">Ook na oplevering blijven we beschikbaar voor onderhoud, reparatie en doorontwikkeling.</p>
+      </li>
+    </ol>
+  </section>
+<!-- ===== STORY ===== -->
+<section id="story" class="section story">
+  <div class="section-head">
+    <p class="eyebrow" data-i18n="story_eyebrow">ONS VERHAAL</p>
+    <h2 data-i18n="story_title">Van de basischool tot een automatiseringssamenwerking</h2>
   </div>
-  </section>
 
-  <!-- ✅ Story Section -->
-  <section id="story" class="content-section">
-    <h2 data-key="story_title">Ons Verhaal</h2> 
-    <p data-key="story_text_1">Het idee kwam voort uit een eenvoudige vraag: wat gebeurt er met alle onbezorgde post die nooit thuis aankomt? Na te hebben ontdekt dat veel ervan wordt vernietigd, wilden we een systeem creëren dat iedereen ten goede komt: logistieke bedrijven, het milieu en nieuwsgierige klanten.</p> 
-    <p data-key="story_text_2">Onze reis begon met de verkoopautomaten zelf. Omdat veel automaten afhankelijk zijn van propriëtaire technologie geproduceerd door slechts een paar bedrijven, besloten we open-source alternatieven te onderzoeken. Alles is nu intern ontworpen en gebouwd! Onze software is volledig open-source en te vinden hier: <a href="https://github.com/Ebbevd/VendOS" target="_blank" data-key="story_link_text">VendOS op GitHub</a>. De machines zijn gebouwd met eenvoudige, gebruiksvriendelijke elektronica die gemakkelijk te repareren is. Deze aanpak stelde ons in staat verkoopautomaten te creëren die zowel betaalbaar als onderhoudbaar zijn. Onze allereerste machine was tweedehands, met alle elektronica vervangen om aan onze normen te voldoen.</p> 
-    <div class="story-image"> 
-      <div class="slideshow-container"> 
-          <div class="slide"> 
-          <img src="images/Packages.jpeg" alt="Packages" /> 
-          <p class="caption" data-key="slide4_caption">Development log: de machine wordt voorzien van packages.</p> 
-        </div> 
-        <div class="slide"> 
-          <img src="images/vending_making.jpeg" alt="Onze eerste verkoopautomaat" /> 
-          <p class="caption" data-key="slide1_caption">Development log: Wij voorzien alle machines van nieuwe, duurzame onderdelen.</p> 
+  <div class="story-body">
+    <p data-i18n="story_p1">Ik en Robin kennen elkaar als sinds de basischool, na ook veel van onze studententeid samen te hebben doorgebracht leek het ons leuk een bedrijfje op te richten. Dit begon bij het kopen van een tweede hands verkoopautomaat. Dit hebben we volledig handgebouwd met eigen software. Met deze kennis zijn we veder gegaan.</p>
+
+    <p data-i18n="story_p2">
+      Omdat verkoopautomaten meestal draaien op propriëtaire techniek van een handvol fabrikanten,
+      ontwierpen we onze eigen: eenvoudige, gebruiksvriendelijke elektronica en volledig open-source
+      besturingssoftware,
+      <a href="https://github.com/Ebbevd/VendOS" target="_blank" rel="noopener">VendOS</a>,
+      die iedereen vrij kan gebruiken.
+    </p>
+
+    <p data-i18n="story_p3">
+      Die aanpak; robuuste, repareerbare techniek zonder onnodige complexiteit, bleek breder toepasbaar
+      dan verkoopautomaten alleen. Vandaag zetten we dezelfde denkwijze in voor automatiseringsprojecten
+      in uiteenlopende sectoren, terwijl we onze eerste liefde, de verkoopautomaat, zijn blijven bouwen
+      en repareren.
+    </p>
+      <!-- Team -->
+      <div class="team-members">
+
+        <div class="team-member">
+          <img src="images/ebbe.jpeg" alt="Ebbe" class="team-photo">
+          <h3>
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener" aria-label="Ebbe LinkedIn">
+              <i class="fab fa-linkedin"></i> Ebbe
+            </a>
+          </h3>
         </div>
-        <div class="slide"> 
-          <img src="images/vending_inside.jpeg" alt="Custom made elektronica" /> 
-          <p class="caption" data-key="slide2_caption">Development log: De machines worden van binnen volledig door ons ontwikkeld.</p> 
+
+        <div class="team-member">
+          <img src="images/robin.jpg" alt="Robin" class="team-photo">
+          <h3>
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener" aria-label="Robin LinkedIn">
+              <i class="fab fa-linkedin"></i> Robin
+            </a>
+          </h3>
         </div>
-        <div class="slide"> 
-          <img src="images/vending_programming.JPG" alt="Custom made software" /> 
-          <p class="caption" data-key="slide3_caption">Development log: We voorzien elke machine met een touchscreen scherm.</p> 
-        </div> 
-        <!-- Navigation buttons --> 
-        <button class="prev" onclick="plusSlides(-1)">&#10094;</button> 
-        <button class="next" onclick="plusSlides(1)">&#10095;</button> 
-      </div> 
-    </div> 
-    <p data-key="story_text_3">Wat begon als een experimenteel concept, is uitgegroeid tot een duurzaam model dat recycling, innovatie en een vleugje mysterie combineert. Elke verkoopautomaat vertegenwoordigt een kleine stap naar een meer circulaire economie, en een leuke verrassing voor iedereen die meedoet.</p>
-  </section>
 
-  <!-- ✅ Locations Section -->
-  <section id="locations" class="content-section">
-    <h2 data-key="locations_title">Op Zoek naar Locaties</h2>
-    <p data-key="locations_text_1">Wij zijn actief op zoek naar nieuwe locaties voor onze verkoopautomaten. We zoeken ruimtes met veel voetverkeer, zoals kantoren, universiteiten, vervoershubs, winkelgebieden en gemeenschapscentra. Samenwerken met ons biedt de kans deel uit te maken van een innovatief, duurzaam project terwijl u iets unieks en spannends aan uw bezoekers biedt. Wij zijn nog druk in de weer met het perfectioneren van onze automaten en het uitbreiden van ons netwerk, dus dit is het perfecte moment om aan boord te komen.</p> 
-    <p data-key="locations_text_2">Als u een ruimte heeft die een van onze machines kan huisvesten, horen we graag van u. Laten we samenwerken om duurzaamheid, nieuwsgierigheid en gemak naar uw locatie te brengen.</p>
-  </section>
+      </div>
+  </div>
 
-  <!-- ✅ Contact Section -->
-  <section id="contact" class="content-section">
-    <h2 data-key="contact_title">Contact</h2>
-    <ul>
-      <li><strong data-key="contact_email_label">Email:</strong> <span data-key="contact_email">management@ds-technical-solutions.nl</span></li>
-      <li><strong data-key="contact_phone_label">Telefoon:</strong> <span data-key="contact_phone">+31649372053</span></li>
-    </ul>
-  </section>
-
-  <!-- ✅ Footer -->
-  <footer class="text-center p-3 mt-4 bg-dark text-white">
-    <div id="machine-status">
-      <span data-key="vending_label">Vending Machine 1:</span>
-      <div id="status-indicator" class="status-red"></div>
+</section>
+  <!-- ===== WHO WE WORK WITH ===== -->
+  <section id="who" class="section section-alt">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="who_eyebrow">VOOR WIE</p>
+      <h2 data-i18n="who_title">Met wie we werken</h2>
     </div>
-    <p>© <span id="year"></span> Dijk & Snijders Technical Solutions. <span data-key="rights_text">Alle rechten voorbehouden.</span></p>
-  </footer>
 
-  <button id="lang-toggle" class="lang-btn btn btn-primary"><img src="https://flagcdn.com/w20/gb.png" alt="UK flag">EN</button>
+    <div class="card-grid three">
+      <article class="card">
+        <h3 data-i18n="who1_title">Exploitanten van verkoopautomaten</h3>
+        <p data-i18n="who1_text">U vult en beheert de machine, wij zorgen dat de techniek erin blijft werken, van eerste installatie tot reparatie.</p>
+      </article>
+      <article class="card">
+        <h3 data-i18n="who2_title">Facilitaire bedrijven &amp; kantoren</h3>
+        <p data-i18n="who2_text">Terugkerende processen die handmatig worden gedaan, zijn vaak kandidaat voor automatisering. We denken vrijblijvend mee.</p>
+      </article>
+      <article class="card">
+        <h3 data-i18n="who3_title">Productie- &amp; logistieke bedrijven</h3>
+        <p data-i18n="who3_text">Van kleine slimme sensoren tot volledige besturingssystemen: we bouwen automatisering die past bij uw schaal.</p>
+      </article>
+    </div>
+  </section>
 
-  <!-- ✅ Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
-  <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section contact">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="contact_eyebrow">CONTACT</p>
+      <h2 data-i18n="contact_title">Laten we praten</h2>
+      <p class="contact-text" data-i18n="contact_text">Heeft u een proces dat slimmer kan, een machine die gerepareerd moet worden, of gewoon een vraag? Neem contact op.</p>
+    </div>
 
-  <script>
-  (function() {
-    emailjs.init("4kNHb5IX44HaXM24h"); // Public Key.
-  })();
-</script>
+    <div class="contact-grid">
+      <dl class="contact-info">
+        <div>
+          <dt data-i18n="contact_email_label">E-mail</dt>
+          <dd><a href="mailto:management@ds-technical-solutions.nl">management@ds-technical-solutions.nl</a></dd>
+        </div>
+        <div>
+          <dt data-i18n="contact_phone_label">Telefoon</dt>
+          <dd><a href="tel:+31649372053">+31 6 49 37 20 53</a></dd>
+        </div>
+      </dl>
+
+      <form id="contact-form" class="contact-form">
+        <label>
+          <span data-i18n="form_name">Naam</span>
+          <input type="text" name="from_name" required>
+        </label>
+        <label>
+          <span data-i18n="form_email">E-mail</span>
+          <input type="email" name="reply_to" required>
+        </label>
+        <label>
+          <span data-i18n="form_message">Bericht</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary" data-i18n="form_submit">Versturen</button>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Dijk &amp; Snijders Technical Solutions. <span data-i18n="footer_rights">Alle rechten voorbehouden.</span></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>

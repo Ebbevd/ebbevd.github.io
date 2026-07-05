@@ -1,238 +1,270 @@
-// Display current year automatically
+// ============================================================
+// Dijk & Snijders — site interactions
+// ============================================================
+
+// ---------- footer year ----------
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// ---------- mobile nav ----------
+const navToggle = document.getElementById("navToggle");
+const navMenu = document.getElementById("navMenu");
 
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-    const slides = document.getElementsByClassName("slide");
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[slideIndex - 1].style.display = "block";
-}
-
-async function checkVendingMachineStatus() {
-    const URL = "https://sympodial-plicately-fredia.ngrok-free.dev";
-    const indicator = document.getElementById("status-indicator");
-
-    if (!indicator) return console.error("Status indicator element not found");
-
-    try {
-        const now = new Date();
-        console.log("Current time:", now);
-        // Update the status (GET or POST)
-        await fetch(URL + "/status/update-status/", {
-            method: "GET",
-            headers: { "ngrok-skip-browser-warning": "true" },
-        });
-
-        // Get the current status
-        const response = await fetch(URL + "/status/get-status/", {
-            method: "GET",
-            headers: { "ngrok-skip-browser-warning": "true" },
-        });
-        const data = await response.json();
-
-        // Trim microseconds if necessary
-        const lastBeat = new Date(data.lastBeat.replace(/\.(\d{3})\d+/, '.$1'));
-        if (isNaN(lastBeat)) throw new Error("Invalid lastBeat date");
-
-        const diffMinutes = (now - lastBeat) / (1000 * 60);
-
-        console.log(`Last beat: ${lastBeat}, Now: ${now}, Diff (minutes): ${diffMinutes}`);
-
-        if (diffMinutes <= 30) {
-            console.log("Vending machine is ONLINE");
-            indicator.classList.remove("status-red");
-            indicator.classList.add("status-green");
-        } else {
-            console.log("Vending machine is OFFLINE");
-            indicator.classList.remove("status-green");
-            indicator.classList.add("status-red");
-        }
-    } catch (error) {
-        console.error("Failed to fetch machine status:", error);
-        indicator.classList.remove("status-green");
-        indicator.classList.add("status-red");
-    }
-}
-
-async function getVendingMachineStock() {
-    // If stock is low send an alert. 
-    const URL = "https://sympodial-plicately-fredia.ngrok-free.dev";
-    try {
-        const response = await fetch(URL + "/status/get-stock/", {
-            method: "GET",
-            headers: { "ngrok-skip-browser-warning": "true" },
-        });
-        const data = await response.json();
-
-        if (data.storage_status == "low_stock") {
-            sendAlert();
-        }
-
-    } catch (error) {
-        console.error("Failed to fetch machine stock:", error);
-    }
-
-}
-
-function sendAlert() {
-    // Send an alert when stock is low
-    console.log("Stock is low! Sending alert...");
-    // Implement alert logic here (e.g., send email or notification)
-    emailjs.send("service_khjc9j8", "template_qokzv6w")
-        .then(() => {
-            console.log("Alert email sent successfully!");
-        })
-        .catch((err) => {
-            console.error("Failed to send alert email:", err);
-        });
-}
-
-function sendError() {
-    // Send an alert when stock is low
-    console.log("Could not connect to vending machine! Sending alert...");
-    // Implement alert logic here (e.g., send email or notification)
-    emailjs.send("service_khjc9j8", "template_yrvk7xe")
-        .then(() => {
-            console.log("Alert email sent successfully!");
-        })
-        .catch((err) => {
-            console.error("Failed to send alert email:", err);
-        });
-}
-
-
-
-const translations = {
-    EN: {
-        nav_home: "Home",
-        nav_model: "Our Business Model",
-        nav_story: "Our Story",
-        nav_locations: "Locations",
-        nav_contact: "Contact",
-        hero_title: "Turning Undelivered Mail into Opportunity",
-        hero_text: "We place vending machines to sell undelivered mail. Reducing waste, sparking curiosity, and preventing items from disappearing forever.",
-        model_title: "Our Business Model",
-        model_text_1: "Every year, countless packages and items go unclaimed, are returned, or remain unused for various reasons: Wrong addresses, failed deliveries, or simply forgotten orders. Instead of letting these items go to waste, we try to give them a second life.",
-        model_text_2: "We work closely with delivery companies and other partners to collect items that would otherwise be discarded. Each package is anonymized and prepared for the consumer market.",
-        step1_title: "1. We Collect",
-        step1_text: "We collect undelivered items that can legally be resold, preventing unnecessary waste.",
-        step2_title: "2. We Refill",
-        step2_text: "Each package is repackaged and placed in vending machines at public locations and transport hubs.",
-        step3_title: "3. You Discover",
-        step3_text: "Customers buy a mystery package — each purchase supports sustainability and circular reuse.",
-        story_title: "Our Story",
-        story_text_1: "The idea arose from a simple question: what happens to all undelivered mail that never reaches home? After discovering much of it is destroyed, we wanted a system that benefits everyone: logistics companies, the environment, and curious customers.",
-        story_text_2: "Our journey began with the vending machines themselves. Since many machines rely on proprietary technology made by only a few companies, we explored open-source alternatives. Everything is now internally designed and built! Our software is fully open-source and available here: VendOS on GitHub. The machines are built with simple, user-friendly electronics that are easy to repair. This approach allowed us to create vending machines that are both affordable and maintainable. Our very first machine was second-hand, with all electronics replaced to meet our standards.",
-        story_link_text: "VendOS on GitHub",
-        slide1_caption: "Development log: We provide all machines with new, sustainable components.",
-        slide2_caption: "Development log: The machines are fully developed internally.",
-        slide3_caption: "Development log: Each machine is equipped with a touchscreen.",
-        slide4_caption: "Development log: the machine is stocked with packages.",
-        story_text_3: "What began as an experimental concept has evolved into a sustainable model combining recycling, innovation, and a touch of mystery. Each vending machine represents a small step toward a more circular economy, and a fun surprise for everyone involved.",
-        locations_title: "Looking for Locations",
-        locations_text_1: "We are actively seeking new locations for our vending machines. We look for spaces with high foot traffic, such as offices, universities, transport hubs, shopping areas, and community centers. Collaborating with us gives you the opportunity to be part of an innovative, sustainable project while offering something unique and exciting to your visitors. We are still perfecting our machines and expanding our network, so this is the perfect time to join.",
-        locations_text_2: "If you have a space that can host one of our machines, we would love to hear from you. Let's work together to bring sustainability, curiosity, and convenience to your location.",
-        contact_title: "Contact",
-        contact_email_label: "Email:",
-        contact_email: "management@ds-technical-solutions.nl",
-        contact_phone_label: "Phone:",
-        contact_phone: "+31649372053",
-        vending_label: "Vending Machine 1:",
-        rights_text: "All rights reserved."
-    },
-    NL: {
-        nav_home: "Home",
-        nav_model: "Ons Businessmodel",
-        nav_story: "Ons Verhaal",
-        nav_locations: "Locaties",
-        nav_contact: "Contact",
-        hero_title: "Onbezorgde Post Omzetten in Kans",
-        hero_text: "We plaatsen verkoopautomaten om onbezorgde post te verkopen. Zo verminderen we verspilling, wekken nieuwsgierigheid en voorkomen we dat items voorgoed verdwijnen.",
-        model_title: "Ons Businessmodel",
-        model_text_1: "Elk jaar blijven talloze pakketten en items ongeclaimd, worden geretourneerd of blijven ongebruikt om verschillende redenen: Verkeerde adressen, mislukte leveringen of simpelweg vergeten bestellingen. In plaats van deze items te laten verspillen, proberen wij ze een tweede leven te geven.",
-        model_text_2: "We werken nauw samen met bezorgbedrijven en andere partners om items te verzamelen die anders zouden worden weggegooid. Elk pakket wordt geanonimiseerd en klaargemaakt voor de consumentenmarkt.",
-        step1_title: "1. Wij Verzamelen",
-        step1_text: "We verzamelen onbezorgde items die legaal opnieuw verkocht mogen worden, zodat onnodige verspilling wordt voorkomen.",
-        step2_title: "2. Wij Vullen Aan",
-        step2_text: "Zonder voorkennis worden pakketten in verkoopautomaten geplaatst op openbare locaties en vervoershubs.",
-        step3_title: "3. Jij Ontdekt",
-        step3_text: "Klanten kopen een mysteriepakket — elke aankoop ondersteunt duurzaamheid en circulair hergebruik.",
-        story_title: "Ons Verhaal",
-        story_text_1: "Het idee kwam voort uit een eenvoudige vraag: wat gebeurt er met alle onbezorgde post die nooit thuis aankomt? Na te hebben ontdekt dat veel ervan wordt vernietigd, wilden we een systeem creëren dat iedereen ten goede komt: logistieke bedrijven, het milieu en nieuwsgierige klanten.",
-        story_text_2: "Onze reis begon met de verkoopautomaten zelf. Omdat veel automaten afhankelijk zijn van propriëtaire technologie geproduceerd door slechts een paar bedrijven, besloten we open-source alternatieven te onderzoeken. Alles is nu intern ontworpen en gebouwd! Onze software is volledig open-source en te vinden hier: VendOS op GitHub. De machines zijn gebouwd met eenvoudige, gebruiksvriendelijke elektronica die gemakkelijk te repareren is. Deze aanpak stelde ons in staat verkoopautomaten te creëren die zowel betaalbaar als onderhoudbaar zijn. Onze allereerste machine was tweedehands, met alle elektronica vervangen om aan onze normen te voldoen.",
-        story_link_text: "VendOS op GitHub",
-        slide1_caption: "Development log: Wij voorzien alle machines van nieuwe, duurzame onderdelen.",
-        slide2_caption: "Development log: De machines worden van binnen volledig door ons ontwikkeld.",
-        slide3_caption: "Development log: We voorzien elke machine met een touchscreen scherm.",
-        slide4_caption: "Development log: de machine wordt voorzien van packages.",
-        story_text_3: "Wat begon als een experimenteel concept, is uitgegroeid tot een duurzaam model dat recycling, innovatie en een vleugje mysterie combineert. Elke verkoopautomaat vertegenwoordigt een kleine stap naar een meer circulaire economie, en een leuke verrassing voor iedereen die meedoet.",
-        locations_title: "Op Zoek naar Locaties",
-        locations_text_1: "Wij zijn actief op zoek naar nieuwe locaties voor onze verkoopautomaten. We zoeken ruimtes met veel voetverkeer, zoals kantoren, universiteiten, vervoershubs, winkelgebieden en gemeenschapscentra. Samenwerken met ons biedt de kans deel uit te maken van een innovatief, duurzaam project terwijl u iets unieks en spannends aan uw bezoekers biedt. Wij zijn nog druk in de weer met het perfectioneren van onze automaten en het uitbreiden van ons netwerk, dus dit is het perfecte moment om aan boord te komen.",
-        locations_text_2: "Als u een ruimte heeft die een van onze machines kan huisvesten, horen we graag van u. Laten we samenwerken om duurzaamheid, nieuwsgierigheid en gemak naar uw locatie te brengen.",
-        contact_title: "Contact",
-        contact_email_label: "Email:",
-        contact_email: "management@ds-technical-solutions.nl",
-        contact_phone_label: "Telefoon:",
-        contact_phone: "+31649372053",
-        vending_label: "Vending Machine 1:",
-        rights_text: "Alle rechten voorbehouden."
-    }
-};
-
-let currentLang = "NL"; // initial language
-
-document.getElementById("lang-toggle").addEventListener("click", () => {
-    // Toggle language
-    currentLang = currentLang === "NL" ? "EN" : "NL"; // uppercase consistently
-
-    if (currentLang == "NL") {
-        buttonLang = "EN"
-    } else {
-        buttonLang = "NL"
-    }
-    // Flag URLs
-    const flags = {
-        NL: "https://flagcdn.com/w20/nl.png",
-        EN: "https://flagcdn.com/w20/gb.png"
-    };
-
-    // Update button with flag + text
-    document.getElementById("lang-toggle").innerHTML = `
-        <img src="${flags[buttonLang]}" alt="${buttonLang} flag">${buttonLang.toUpperCase()}
-    `;
-
-    // Update other texts
-    updateTexts();
+navToggle.addEventListener("click", () => {
+    const isOpen = navMenu.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-
-function updateTexts() {
-    document.querySelectorAll("[data-key]").forEach(el => {
-        const key = el.getAttribute("data-key");
-        if (translations[currentLang][key]) {
-            el.innerText = translations[currentLang][key];
-        }
+navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
     });
+});
+
+// ============================================================
+// i18n
+// Translation values may contain simple inline HTML (e.g. a link),
+// so they are applied with innerHTML. Keep translation content
+// trusted/static — never inject user-provided data this way.
+// ============================================================
+
+const translations = {
+    NL: {
+        meta_title: "Dijk & Snijders — Automatisering & Techniek",
+        nav_services: "Diensten",
+        nav_process: "Werkwijze",
+        nav_story: "Ons Verhaal",
+        nav_who: "Voor Wie",
+        nav_contact: "Contact",
+
+        hero_eyebrow: "AUTOMATISERINGSBUREAU",
+        hero_title: "Wij bouwen systemen die zichzelf runnen.",
+        hero_text: "Dijk &amp; Snijders ontwerpt, bouwt en onderhoudt automatisering op maat — van industriële processen tot de verkoopautomaten waarmee we ooit begonnen. Eén filosofie: eenvoudige, robuuste techniek die jarenlang meegaat.",
+        hero_cta_primary: "Plan een gesprek",
+        hero_cta_secondary: "Bekijk onze diensten",
+
+        services_eyebrow: "WAT WE DOEN",
+        services_title: "Vier disciplines, één aanpak",
+        service1_title: "Automatiseringsadvies",
+        service1_text: "We brengen uw proces in kaart en ontwerpen een automatiseringsoplossing op maat — van eerste idee tot werkend prototype.",
+        service2_title: "Elektronica &amp; Hardware",
+        service2_text: "Custom elektronica, ontworpen om te repareren in plaats van te vervangen. Betaalbaar, onderhoudbaar en gebouwd om lang mee te gaan.",
+        service3_title: "Verkoopautomaten: Bouw &amp; Reparatie",
+        service3_text: "We bouwen en repareren verkoopautomaten met onze eigen techniek. U beheert de voorraad; wij zorgen dat de machine het gewoon blijft doen.",
+        service4_title: "Open-Source Besturingssoftware",
+        service4_text: "Onze software word in-house ontwikkeld en is volledig open-source. Updates zijn regelmatig beschikbaar en features worden op request toegevoegd.",
+
+        process_eyebrow: "WERKWIJZE",
+        process_title: "Van idee naar werkend systeem",
+        step1_title: "Analyse",
+        step1_text: "We duiken in uw proces en brengen kansen voor automatisering concreet in kaart.",
+        step2_title: "Ontwerp",
+        step2_text: "Samen ontwerpen we een oplossing — hardware, software, of allebei — afgestemd op uw situatie.",
+        step3_title: "Bouw",
+        step3_text: "We bouwen en testen een werkend systeem, meestal eerst als prototype op kleine schaal.",
+        step4_title: "Onderhoud",
+        step4_text: "Ook na oplevering blijven we beschikbaar voor onderhoud, reparatie en doorontwikkeling.",
+
+        story_eyebrow: "ONS VERHAAL",
+        story_title: "Van de basischool tot een automatiseringssamenwerking",
+        story_p1: "Ik en Robin kennen elkaar als sinds de basischool, na ook veel van onze studententeid samen te hebben doorgebracht leek het ons leuk een bedrijfje op te richten. Dit begon bij het kopen van een tweede hands verkoopautomaat. Dit hebben we volledig handgebouwd met eigen software. Met deze kennis zijn we veder gegaan.",
+        story_p2: 'Omdat verkoopautomaten meestal draaien op propriëtaire techniek van een handvol fabrikanten, ontwierpen we onze eigen: eenvoudige, gebruiksvriendelijke elektronica en volledig open-source besturingssoftware, <a href="https://github.com/Ebbevd/VendOS" target="_blank" rel="noopener">VendOS</a>, die iedereen vrij kan gebruiken.',
+        story_p3: "Die aanpak — robuuste, repareerbare techniek zonder onnodige complexiteit — bleek breder toepasbaar dan verkoopautomaten alleen. Vandaag zetten we dezelfde denkwijze in voor automatiseringsprojecten in uiteenlopende sectoren, terwijl we onze eerste liefde, de verkoopautomaat, zijn blijven bouwen en repareren.",
+
+        who_eyebrow: "VOOR WIE",
+        who_title: "Met wie we werken",
+        who1_title: "Exploitanten van verkoopautomaten",
+        who1_text: "U vult en beheert de machine, wij zorgen dat de techniek erin blijft werken — van eerste installatie tot reparatie.",
+        who2_title: "Facilitaire bedrijven &amp; kantoren",
+        who2_text: "Terugkerende processen die handmatig worden gedaan, zijn vaak kandidaat voor automatisering. We denken vrijblijvend mee.",
+        who3_title: "Productie- &amp; logistieke bedrijven",
+        who3_text: "Van kleine slimme sensoren tot volledige besturingssystemen: we bouwen automatisering die past bij uw schaal.",
+
+        contact_eyebrow: "CONTACT",
+        contact_title: "Laten we praten",
+        contact_text: "Heeft u een proces dat slimmer kan, een machine die gerepareerd moet worden, of gewoon een vraag? Neem contact op.",
+        contact_email_label: "E-mail",
+        contact_phone_label: "Telefoon",
+        form_name: "Naam",
+        form_email: "E-mail",
+        form_message: "Bericht",
+        form_submit: "Versturen",
+
+        footer_rights: "Alle rechten voorbehouden.",
+
+        form_sending: "Bezig met versturen…",
+        form_success: "Bedankt! We nemen zo snel mogelijk contact op.",
+        form_error: "Er ging iets mis. Mail ons gerust rechtstreeks.",
+    },
+
+    EN: {
+        meta_title: "Dijk & Snijders: Automation & Engineering",
+        nav_services: "Services",
+        nav_process: "Approach",
+        nav_story: "Our Story",
+        nav_who: "Who We Help",
+        nav_contact: "Contact",
+
+        hero_eyebrow: "AUTOMATION STUDIO",
+        hero_title: "We build systems that run themselves.",
+        hero_text: "Dijk &amp; Snijders designs, builds, and maintains custom automation, from industrial processes to the vending machines we once started with. One philosophy: simple, robust technology that lasts for years.",
+        hero_cta_primary: "Book a call",
+        hero_cta_secondary: "See our services",
+
+        services_eyebrow: "WHAT WE DO",
+        services_title: "Four disciplines, one approach",
+        service1_title: "Automation Consulting",
+        service1_text: "We map out your process and design a tailored automation solution, from first idea to working prototype.",
+        service2_title: "Electronics &amp; Hardware",
+        service2_text: "Custom electronics, designed to be repaired rather than replaced. Affordable, maintainable, and built to last.",
+        service3_title: "Vending Machines: Build &amp; Repair",
+        service3_text: "We build and repair vending machines using our own technology. You manage the stock; we make sure the machine simply keeps working.",
+        service4_title: "Open Source Control Software",
+        service4_text: "Our software is developed in house and is fully open source. Updates are released regularly and features are added on request.",
+
+        process_eyebrow: "APPROACH",
+        process_title: "From idea to working system",
+        step1_title: "Analysis",
+        step1_text: "We dive into your process and map out concrete opportunities for automation.",
+        step2_title: "Design",
+        step2_text: "Together we design a solution: hardware, software, or both. Everything tailored to your situation.",
+        step3_title: "Build",
+        step3_text: "We build and test a working system, usually starting as a small scale prototype.",
+        step4_title: "Maintenance",
+        step4_text: "Even after delivery, we remain available for maintenance, repair, and further development.",
+
+        story_eyebrow: "OUR STORY",
+        story_title: "From primary school to an automation partnership",
+        story_p1: "Robin and I have known each other since primary school, and after spending much of our student years together too, we thought it would be fun to start a small company. It began with buying a secondhand vending machine, which we rebuilt entirely by hand with our own software. From there, we kept building on that knowledge.",
+        story_p2: 'Since most vending machines run on proprietary technology from a handful of manufacturers, we designed our own: simple, user friendly electronics and fully open source control software, <a href="https://github.com/Ebbevd/VendOS" target="_blank" rel="noopener">VendOS</a>, free for anyone to use.',
+        story_p3: "That approach; robust, repairable technology without unnecessary complexity, turned out to apply far beyond vending machines alone. Today we bring the same thinking to automation projects across many different sectors, while still building and repairing our first love, the vending machine.",
+
+        who_eyebrow: "WHO WE HELP",
+        who_title: "Who we work with",
+        who1_title: "Vending machine operators",
+        who1_text: "You stock and manage the machine, we make sure the technology inside keeps working, from first installation to repair.",
+        who2_title: "Facility Companies &amp; Offices",
+        who2_text: "Recurring processes that are still done manually are often good candidates for automation. We're happy to think it through with you, with no obligation.",
+        who3_title: "Manufacturing &amp; Logistics Companies",
+        who3_text: "From small smart sensors to complete control systems: we build automation that fits your scale.",
+
+        contact_eyebrow: "CONTACT",
+        contact_title: "Let's talk",
+        contact_text: "Do you have a process that could be smarter, a machine that needs repair, or simply a question? Get in touch.",
+        contact_email_label: "Email",
+        contact_phone_label: "Phone",
+        form_name: "Name",
+        form_email: "Email",
+        form_message: "Message",
+        form_submit: "Send",
+
+        footer_rights: "All rights reserved.",
+
+        form_sending: "Sending…",
+        form_success: "Thank you! We will get back to you as soon as possible.",
+        form_error: "Something went wrong. Feel free to email us directly.",
+    },
+};
+
+const LANG_KEY = "ds-lang";
+
+// Reading/writing localStorage can throw (file:// pages, private
+// browsing, storage blocked by browser settings, etc). If it does,
+// fall back to an in-memory language preference instead of letting
+// the error stop the rest of the script from running.
+function getSavedLang() {
+    try {
+        return localStorage.getItem(LANG_KEY);
+    } catch (err) {
+        return null;
+    }
 }
 
-// Optional: Set current year dynamically
-document.getElementById("year").innerText = new Date().getFullYear();
+function saveLang(lang) {
+    try {
+        localStorage.setItem(LANG_KEY, lang);
+    } catch (err) {
+        // ignore — language just won't persist between visits
+    }
+}
 
+let currentLang = getSavedLang() || "NL";
 
-// Initial check and every 5 minutes
-checkVendingMachineStatus();
-setInterval(checkVendingMachineStatus, 5 * 60 * 1000);
-getVendingMachineStock();
-setInterval(getVendingMachineStock, 5 * 60 * 1000);
+const flags = {
+    NL: "https://flagcdn.com/w20/nl.png",
+    EN: "https://flagcdn.com/w20/gb.png",
+};
 
+const langToggle = document.getElementById("lang-toggle");
+
+function applyTranslations(lang) {
+    const dict = translations[lang];
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key] != null) el.innerHTML = dict[key];
+    });
+
+    document.documentElement.lang = lang.toLowerCase();
+    document.title = dict.meta_title;
+
+    // button shows the language you'll switch TO
+    const nextLang = lang === "NL" ? "EN" : "NL";
+    langToggle.innerHTML = `<img src="${flags[nextLang]}" alt="" width="20" height="15"><span>${nextLang}</span>`;
+}
+
+langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "NL" ? "EN" : "NL";
+    saveLang(currentLang);
+    applyTranslations(currentLang);
+});
+
+applyTranslations(currentLang);
+
+// ============================================================
+// Contact form (EmailJS)
+//
+// The public key is already configured below. To activate sending,
+// fill in your EmailJS Service ID and Template ID from your
+// EmailJS dashboard (Email Services / Email Templates).
+// Until then, the form falls back to opening the visitor's email
+// client with a pre-filled message.
+// ============================================================
+
+const EMAILJS_PUBLIC_KEY = "4kNHb5IX44HaXM24h";
+const EMAILJS_SERVICE_ID = "service_khjc9j8"; // TODO: add your EmailJS service ID
+const EMAILJS_TEMPLATE_ID = "template_yrvk7xe"; // TODO: add your EmailJS template ID
+
+if (window.emailjs) {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+}
+
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const dict = translations[currentLang];
+
+    if (window.emailjs && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID) {
+        status.textContent = dict.form_sending;
+        try {
+            await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+            status.textContent = dict.form_success;
+            form.reset();
+        } catch (err) {
+            console.error("EmailJS error:", err);
+            status.textContent = dict.form_error;
+        }
+        return;
+    } else {
+        console.warn("EmailJS not configured; falling back to mailto link.");
+    }
+
+    // Fallback: mailto link, since EmailJS isn't fully configured yet
+    const name = form.from_name.value;
+    const email = form.reply_to.value;
+    const message = form.message.value;
+    const subject = encodeURIComponent(`Contact via website — ${name}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    window.location.href = `mailto:management@ds-technical-solutions.nl?subject=${subject}&body=${body}`;
+});
