@@ -37,7 +37,7 @@ const translations = {
         nav_who: "Voor Wie",
         nav_contact: "Contact",
 
-        hero_eyebrow: "AUTOMATISERINGSBUREAU",
+        hero_eyebrow: "AUTOMATISERING EN ADVIES",
         hero_title: "Wij bouwen systemen die zichzelf runnen.",
         hero_text: "Dijk &amp; Snijders ontwerpt, bouwt en onderhoudt automatisering op maat, van kleine industriële processen tot de verkoopautomaten waarmee we ooit begonnen. Eén filosofie: eenvoudige, robuuste techniek die jarenlang meegaat.",
         hero_cta_primary: "Plan een gesprek",
@@ -105,7 +105,7 @@ const translations = {
         nav_who: "Who We Help",
         nav_contact: "Contact",
 
-        hero_eyebrow: "AUTOMATION STUDIO",
+        hero_eyebrow: "AUTOMATION AND CONSULTING",
         hero_title: "We build systems that run themselves.",
         hero_text: "Dijk &amp; Snijders designs, builds, and maintains custom automation, from small scale industrial processes to the vending machines we once started with. One philosophy: simple, robust technology that lasts for years.",
         hero_cta_primary: "Book a call",
